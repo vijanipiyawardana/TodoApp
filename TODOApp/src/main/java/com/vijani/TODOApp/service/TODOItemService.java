@@ -12,7 +12,7 @@ import java.util.List;
 public class TODOItemService {
 
     @Autowired
-    TODOItemRepository todoItemRepository;
+    private TODOItemRepository todoItemRepository;
 
     public String todoSave(TODOItem item){
         item.setAddedDate(new Date());
