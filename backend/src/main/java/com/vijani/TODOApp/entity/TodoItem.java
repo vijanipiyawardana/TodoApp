@@ -1,42 +1,28 @@
 package com.vijani.TODOApp.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class TODOItem {
+@Table(name = "todo_item")
+public class TodoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "todo_item_name", nullable = false)
     private String todoItem;
 
+    @Column(name = "added_date")
     @Temporal(TemporalType.DATE)
     private Date addedDate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTodoItem() {
-        return todoItem;
-    }
-
-    public void setTodoItem(String todoItem) {
-        this.todoItem = todoItem;
-    }
-
-    public Date getAddedDate() {
-        return addedDate;
-    }
-
-    public void setAddedDate(Date addedDate) {
-        this.addedDate = addedDate;
-    }
 }
