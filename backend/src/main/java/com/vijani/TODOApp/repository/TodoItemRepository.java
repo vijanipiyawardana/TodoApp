@@ -1,7 +1,7 @@
 package com.vijani.TODOApp.repository;
 
-import com.vijani.TODOApp.entity.TODOItem;
+import com.vijani.TODOApp.entity.TodoItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TODOItemRepository extends JpaRepository<TODOItem, Long> {
+public interface TodoItemRepository extends JpaRepository<TodoItem, Long> {
 }

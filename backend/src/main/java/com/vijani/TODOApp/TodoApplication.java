@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TodoAppApplication {
+public class TodoApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(TodoAppApplication.class, args);
+		SpringApplication.run(TodoApplication.class, args);
 	}
 
 }
