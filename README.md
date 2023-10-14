@@ -1,4 +1,8 @@
-# TODO manager app using;
-## Spring boot
-## Spring MVC
-## REST
+## Technologies used:
+
+### Backend
+- Spring boot
+- Spring MVC
+- REST
+
+### Frontend
