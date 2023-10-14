@@ -1,15 +1,13 @@
 package com.vijani.TODOApp.service;
 
 import com.vijani.TODOApp.dto.TodoItemRequestDto;
+import com.vijani.TODOApp.dto.TodoItemResponseDto;
 import com.vijani.TODOApp.entity.TodoItem;
 import com.vijani.TODOApp.repository.TodoItemRepository;
 import com.vijani.TODOApp.util.Converter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Date;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +21,8 @@ public class TodoItemService {
         return "Successfully saved!";
     }
 
-    public List<TodoItem> todoGetAll(){
+    public List<TodoItemResponseDto> todoGetAll(){
         List<TodoItem> todoItemList = todoItemRepository.findAll();
-        return todoItemList;
+        return Converter.toTodoItemResponseDtoList(todoItemList);
     }
 }
