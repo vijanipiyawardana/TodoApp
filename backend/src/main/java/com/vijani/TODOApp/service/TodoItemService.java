@@ -1,7 +1,8 @@
 package com.vijani.TODOApp.service;
 
-import com.vijani.TODOApp.entity.TODOItem;
-import com.vijani.TODOApp.repository.TODOItemRepository;
+import com.vijani.TODOApp.entity.TodoItem;
+import com.vijani.TODOApp.repository.TodoItemRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,19 +10,19 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class TODOItemService {
+@RequiredArgsConstructor
+public class TodoItemService {
 
-    @Autowired
-    private TODOItemRepository todoItemRepository;
+    private final TodoItemRepository todoItemRepository;
 
-    public String todoSave(TODOItem item){
+    public String todoSave(TodoItem item){
         item.setAddedDate(new Date());
         todoItemRepository.save(item);
         return "Successfully saved!";
     }
 
-    public List<TODOItem> todoGetAll(){
-        List<TODOItem> todoItemList = todoItemRepository.findAll();
+    public List<TodoItem> todoGetAll(){
+        List<TodoItem> todoItemList = todoItemRepository.findAll();
         return todoItemList;
     }
 }

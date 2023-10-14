@@ -1,33 +1,33 @@
 package com.vijani.TODOApp.controller;
 
-import com.vijani.TODOApp.entity.TODOItem;
-import com.vijani.TODOApp.service.TODOItemService;
+import com.vijani.TODOApp.entity.TodoItem;
+import com.vijani.TODOApp.service.TodoItemService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class TODOItemRESTController {
+@RequestMapping("/api/todo")
+@RequiredArgsConstructor
+public class TodoItemController {
 
-    @Autowired
-    private TODOItemService todoItemService;
+    private final TodoItemService todoItemService;
 
-    @PostMapping("/todoSave")
-    public ResponseEntity<String>  todoSave(@RequestBody TODOItem todoItem){
+    @PostMapping("/save")
+    public ResponseEntity<String>  todoSave(@RequestBody TodoItem todoItem){
         String output = todoItemService.todoSave(todoItem);
         ResponseEntity<String> response = ResponseEntity.accepted().body(output);
         return response;
     }
 
-    @GetMapping("/todoGet")
-    public ResponseEntity<List<TODOItem>> todoGet(){
-        List<TODOItem> todoItems = todoItemService.todoGetAll();
-        ResponseEntity<List<TODOItem>> response = ResponseEntity.ok(todoItems);
+    @GetMapping("/get")
+    public ResponseEntity<List<TodoItem>> todoGet(){
+        List<TodoItem> todoItems = todoItemService.todoGetAll();
+        ResponseEntity<List<TodoItem>> response = ResponseEntity.ok(todoItems);
         return response;
     }
 
