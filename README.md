@@ -6,3 +6,6 @@
 - REST
 
 ### Frontend
+- Next Js
+- React Js
+- React Query
