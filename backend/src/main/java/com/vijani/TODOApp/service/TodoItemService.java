@@ -1,7 +1,9 @@
 package com.vijani.TODOApp.service;
 
+import com.vijani.TODOApp.dto.TodoItemRequestDto;
 import com.vijani.TODOApp.entity.TodoItem;
 import com.vijani.TODOApp.repository.TodoItemRepository;
+import com.vijani.TODOApp.util.Converter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,9 @@ public class TodoItemService {
 
     private final TodoItemRepository todoItemRepository;
 
-    public String todoSave(TodoItem item){
-        item.setAddedDate(new Date());
-        todoItemRepository.save(item);
+    public String todoSave(TodoItemRequestDto dto){
+        TodoItem todoItem = Converter.fromTodoItemRequestDto(dto);
+        todoItemRepository.save(todoItem);
         return "Successfully saved!";
     }
 
