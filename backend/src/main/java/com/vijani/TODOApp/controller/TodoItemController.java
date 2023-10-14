@@ -1,5 +1,6 @@
 package com.vijani.TODOApp.controller;
 
+import com.vijani.TODOApp.dto.TodoItemRequestDto;
 import com.vijani.TODOApp.entity.TodoItem;
 import com.vijani.TODOApp.service.TodoItemService;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,9 @@ public class TodoItemController {
 
     private final TodoItemService todoItemService;
 
-    @PostMapping("/save")
-    public ResponseEntity<String>  todoSave(@RequestBody TodoItem todoItem){
-        String output = todoItemService.todoSave(todoItem);
+    @PostMapping("/add")
+    public ResponseEntity<String>  todoSave(@RequestBody TodoItemRequestDto dto){
+        String output = todoItemService.todoSave(dto);
         ResponseEntity<String> response = ResponseEntity.accepted().body(output);
         return response;
     }
