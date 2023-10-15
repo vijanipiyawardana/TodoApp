@@ -15,10 +15,10 @@ public class TodoItemService {
 
     private final TodoItemRepository todoItemRepository;
 
-    public String todoSave(TodoItemRequestDto dto){
+    public TodoItemResponseDto todoSave(TodoItemRequestDto dto){
         TodoItem todoItem = Converter.fromTodoItemRequestDto(dto);
         todoItemRepository.save(todoItem);
-        return "Successfully saved!";
+        return Converter.toTodoItemResponseDto(todoItem);
     }
 
     public List<TodoItemResponseDto> todoGetAll(){

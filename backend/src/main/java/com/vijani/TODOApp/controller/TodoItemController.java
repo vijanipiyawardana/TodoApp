@@ -17,9 +17,9 @@ public class TodoItemController {
     private final TodoItemService todoItemService;
 
     @PostMapping
-    public ResponseEntity<String> todoSave(@RequestBody TodoItemRequestDto dto){
-        String output = todoItemService.todoSave(dto);
-        return ResponseEntity.accepted().body(output);
+    public ResponseEntity<TodoItemResponseDto> todoSave(@RequestBody TodoItemRequestDto dto){
+        TodoItemResponseDto todoItemResponseDto = todoItemService.todoSave(dto);
+        return ResponseEntity.accepted().body(todoItemResponseDto);
     }
 
     @GetMapping
