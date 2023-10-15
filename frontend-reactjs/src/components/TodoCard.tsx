@@ -1,15 +1,22 @@
-import { todoType } from "./Todo"
+import { TodoType } from "./Todo"
+import Card from "react-bootstrap/Card";
 
 type TodoCardProps = {
-    id: string;
-    todoItem: todoType;
+    todoItem: TodoType;
 }
 
 export const TodoCard = (props: TodoCardProps) => {
 
   return (
 
-    <div>TodoCard</div>
+    <Card>
+      <Card.Body>
+        <Card.Header>{props.todoItem.id}</Card.Header>
+        <Card.Title>{props.todoItem.title}</Card.Title>
+        <Card.Text>{props.todoItem.addedDate}</Card.Text>
+        <Card.Text>{props.todoItem.status}</Card.Text>
+      </Card.Body>
+    </Card>
 
   )
 }
