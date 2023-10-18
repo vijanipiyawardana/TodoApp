@@ -12,15 +12,25 @@ export interface Todo {
 
 export const Todo = () => {
 
-  const {} = useQuery({
-    queryKey: ["todos"],
-    queryFn: async () => {
-        const {data} = await axios.get("http://localhost:8080/api/todo")
-        console.log(data)
-    }
-  })
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["todos"],
+        queryFn: async () => {
+            const { data } = await axios.get("http://localhost:8080/api/todo");
+            console.log(data);
+            return data as Todo[];
+        }
+    });
 
-  return (
-    <div>Todo</div>
-  )
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
+    if (isError) {
+        return <div>Error...</div>
+    }
+
+
+    return (
+        <div>{JSON.stringify(data, null, 2)}</div>
+    )
 }
