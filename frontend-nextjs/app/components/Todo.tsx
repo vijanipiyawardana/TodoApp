@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { TodoCard } from "./TodoCard";
 
 export interface Todo {
     id: string;
@@ -31,6 +32,10 @@ export const Todo = () => {
 
 
     return (
-        <div>{JSON.stringify(data, null, 2)}</div>
+        <div>
+             {data?.map((todo: Todo) => {
+                return <TodoCard key={todo.id} todoItem={todo} />
+            })}
+        </div>
     )
 }
